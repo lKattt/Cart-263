@@ -1,22 +1,21 @@
 /**
-Title of Project
-Author Name
-
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Pong
+by Katt for Cart 263 :)
 */
 
 "use strict";
 
-//score
-let score1 = 0;
-let score2 = 0;
+//font
+let font;
 
 /**
  Preload function
  */
-
- let font;
+/**
+ function preload() {
+    font = loadFont('pixel.ttf');
+ }
+ */
 
 
 /**
@@ -25,15 +24,21 @@ Description of setup
 function setup() {
     createCanvas(1080, 720);
     background(0, 0, 0);
-    font = loadFont('pixel.ttf');
 }
 
 // Paddles
 let paddle1 = 500;
 let paddle2 = 500;;
     
-// The ball 
+// Ball 
+let Xpos;
+let Ypos;
 let ball;
+
+//score
+let score1 = 0;
+let score2 = 0;
+
 /**
 Description of draw()
 */
@@ -47,7 +52,7 @@ function draw() {
     fill(255);
     rect(980, paddle2, 50, 100);
 // Press the corresponding key | ISSUES: Have to press un specified key for paddle to stop moving 
-    if (keyIsDown) { //When key is pressed and held it will continually move | ISSUES: each paddle stops moving when other paddle is moved
+    if (keyIsPressed) { //When key is pressed and held it will continually move | ISSUES: each paddle stops moving when other paddle is moved
         if (keyCode == 87) { // W
             paddle1 -= 5;
         } 
@@ -61,10 +66,11 @@ function draw() {
             paddle2 += 5;
         }
             print("working");
-        } 
+    } 
+
+    ellipse(Xpos, Ypos, 20, 20);
 
     textSize(50);
-    textFont(font);
     text('PONG', 450, 50);
     text('0', 150, 70);
     text('0', 880, 70);
