@@ -9,7 +9,8 @@ author, and this description to match your project!
 "use strict";
 
 //score
-let score = 0;
+let score1 = 0;
+let score2 = 0;
 
 /**
  Preload function
@@ -36,6 +37,7 @@ let ball;
 /**
 Description of draw()
 */
+//game screen
 function draw() {
     background(0);
 
@@ -68,9 +70,22 @@ function draw() {
     text('0', 880, 70);
  }
 
+ //scoreboard process
  /** function scoreboard() {
-    if () {
-
+    if (x >= width) {
+        score1++;
+    } else if (-x <= width) {
+        score2++;
+    }
+    println("working");
+    if (score1 > 10) {
+        textFont(50);
+        textAlign(CENTER, CENTER);
+        text("Winner Player 1!!");
+    } else if (score2 > 10) {
+        textFont(50);
+        textAlign(CENTER, CENTER);
+        text("Winner Player 2!!");
     }
  }
  **/
