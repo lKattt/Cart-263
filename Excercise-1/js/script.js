@@ -68,19 +68,20 @@ function draw() {
             print("working");
     } 
 
-    ellipse(Xpos, Ypos, 20, 20);
+    rect(520, 75, 10, 720);
+    ellipse(530, 250, 20, 20);
 
     textSize(50);
-    text('PONG', 450, 50);
+    text('PONG', 450, 70);
     text('0', 150, 70);
     text('0', 880, 70);
  }
 
  //scoreboard process
  /** function scoreboard() {
-    if (x >= width) {
+    if (x > width) {
         score1++;
-    } else if (-x <= width) {
+    } else if ( x > width - 20) {
         score2++;
     }
     println("working");
