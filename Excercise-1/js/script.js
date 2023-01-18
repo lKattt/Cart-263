@@ -31,13 +31,13 @@ let paddle1 = 500;
 let paddle2 = 500;;
     
 // Ball 
-let Xpos;
-let Ypos;
-let ball;
-
+let x = 320;
+let y = 50;
+let xspeed = 20;
+let yspeed = 15;
 //score
-let score1 = 0;
-let score2 = 0;
+var score1 = 0;
+var score2 = 0;
 
 /**
 Description of draw()
@@ -45,13 +45,50 @@ Description of draw()
 //game screen
 function draw() {
     background(0);
+//paddles
+    fill(255);
+    rect(40, paddle1, 25, 100);
+    rect(980, paddle2, 25, 100);
+
+//functions
+    keyPressed();
+    move();
+    paddle();
+    scoreboard();
+
+    textSize(50);
+    textAlign(CENTER);
+    text('PONG', 450, 70);
+    text(score1, 150, 70);
+    text(score2, 880, 70);
+}
+//for moving ball 
+function move() {
+    x += xspeed;
+    y += yspeed;
 
     fill(255);
-    rect(40, paddle1, 50, 100);
+    ellipse(x, y, 20, 20);
+// makes ball hit wall
+  if (x > width - 20 || x < 20) {
+    xspeed = -xspeed;
+  } 
+  if (y > height - 20 || y < 20) {
+    yspeed = -yspeed;
+  }
+}
 
-    fill(255);
-    rect(980, paddle2, 50, 100);
-// Press the corresponding key | ISSUES: Have to press un specified key for paddle to stop moving 
+function point() {
+    if (x > LEFT_WIDTH) {
+        score1 + 1;
+    } else if (x > RIGHT_WIDTH) {
+        score2 + 1; 
+    }
+}
+
+ //scoreboard process
+function keyPressed() {
+// Press the corresponding key to move paddle
     if (keyIsPressed) { //When key is pressed and held it will continually move | ISSUES: each paddle stops moving when other paddle is moved
         if (keyCode == 87) { // W
             paddle1 -= 5;
@@ -65,34 +102,31 @@ function draw() {
         if (keyCode == 40) { // down arrow
             paddle2 += 5;
         }
-            print("working");
+            print("working"); 
     } 
+}
 
-    rect(520, 75, 10, 720);
-    ellipse(530, 250, 20, 20);
-
-    textSize(50);
-    text('PONG', 450, 70);
-    text('0', 150, 70);
-    text('0', 880, 70);
- }
-
- //scoreboard process
- /** function scoreboard() {
-    if (x > width) {
-        score1++;
-    } else if ( x > width - 20) {
-        score2++;
+// paddle hits 
+function paddle() {
+    if (x = paddle1) {
+        xspeed = -xspeed;
+    } else if ( y = paddle1) {
+        yspeed = -yspeed;
+    } 
+    if (x = paddle2) {
+        xspeed= -xspeed;
+    } else if (y = paddle2) {
+        yspeed = -yspeed;
     }
-    println("working");
+}
+ function scoreboard() {
+
     if (score1 > 10) {
         textFont(50);
-        textAlign(CENTER, CENTER);
-        text("Winner Player 1!!");
+        text("Winner Player 1!!", 550, 550);
     } else if (score2 > 10) {
         textFont(50);
-        textAlign(CENTER, CENTER);
-        text("Winner Player 2!!");
+        text("Winner Player 2!!", 550, 550);
     }
  }
- **/
+
