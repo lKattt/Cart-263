@@ -58,7 +58,7 @@ function draw() {
 
     textSize(50);
     textAlign(CENTER);
-    text('PONG', 450, 70);
+    text('PONG', 530, 70);
     text(score1, 150, 70);
     text(score2, 880, 70);
 }
