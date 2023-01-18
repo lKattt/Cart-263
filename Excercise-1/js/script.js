@@ -5,19 +5,6 @@ by Katt for Cart 263 :)
 
 "use strict";
 
-//font
-let font;
-
-/**
- Preload function
- */
-/**
- function preload() {
-    font = loadFont('pixel.ttf');
- }
- */
-
-
 /**
 Description of setup
 */
