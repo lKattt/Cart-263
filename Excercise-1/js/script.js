@@ -29,10 +29,12 @@ function setup() {
 // Paddles
 let paddle1 = 500;
 let paddle2 = 500;;
+let xpaddle1 = 80;
+let xpaddle2 = 980;
     
 // Ball 
-let x = 100;
-let y = 0;
+let xball = 100;
+let yball = 100;
 let xbounce = 20;
 let ybounce = 15;
 //score
@@ -47,8 +49,8 @@ function draw() {
     background(0);
 //paddles
     fill(255);
-    rect(40, paddle1, 25, 100);
-    rect(980, paddle2, 25, 100);
+    rect(xpaddle1, paddle1, 25, 100);
+    rect(xpaddle2, paddle2, 25, 100);
 
 //functions
     keyPressed();
@@ -59,33 +61,25 @@ function draw() {
     textSize(50);
     textAlign(CENTER);
     text('PONG', 530, 70);
-    text(score1, 150, 70);
-    text(score2, 880, 70);
+    text(score1, 350, 70);
+    text(score2, 710, 70);
 }
 //for moving ball 
 function move() {
-    x += xbounce;
-    y -= ybounce;
+    xball += xbounce;
+    yball -= ybounce;
     fill(255);
-    ellipse(x, y, 20, 20);
-// If the value of x or y exceeds the limits of the screen, the ball goes back the way it came || ISSUES: The ball goes one way and won't bounce anywhere else & it leaves the top part of the screen but comes back? 
-    if (x > width || x < - width%2) {
+    ellipse(xball, yball, 20, 20);
+// If the value of xball or yball exceeds the limits of the screen, the ball goes back the way it came 
+    if (xball > width || xball < - width%4) {
         xbounce = -xbounce;
     } 
-    if (y > height || y < - height%2) {
+    if (yball > height || yball < - height%2) {
         ybounce = -ybounce;
     }
-// makes ball hit wall
+}
 
-}
-// function when points hit one side it assigns a point
-function point() {
-    if (x > width) {
-        score1++;;
-    } else if (x < -width) {
-        score2++;; 
-    }
-}
+
 
  //scoreboard process
 function keyPressed() {
@@ -105,29 +99,39 @@ function keyPressed() {
         }
             print("working"); 
     } 
+    // stops paddles from going off the screen | ISSUES: Only stops them from going up not down
+    if (paddle1 > height || paddle1 < -height%2) {
+        paddle1 = -paddle1;
+    } else if (paddle2 > height || paddle2 < -height%2) {
+        paddle2 = -paddle2;
+    }
 }
 
-// paddle hits 
 function paddle() {
-    if (x = paddle1) {
+// makes ball hit paddle || ISSUES: Sometimes it registers the paddle as being hit when it wasn't, bugs out and gets ball stuck sometimes
+    if (xball < xpaddle1 && yball > paddle1) {
         xbounce = -xbounce;
-    } else if ( y = paddle1) {
         ybounce = -ybounce;
-    } 
-    if (x = paddle2) {
-        xbounce= -xbounce;
-    } else if (y = paddle2) {
+    }    
+    if (xball > xpaddle2 && yball > paddle2) {
+        xbounce = -xbounce;
         ybounce = -ybounce;
     }
 }
- function scoreboard() {
-
-    if (score1 > 10) {
+// Adds points whenever the opposite wall is hit | ISSUES: Doesn't stop counting after 10
+function scoreboard() {
+    if (xball > width) {
+        score1++;
+    } 
+    if (xball < -width%2) {
+        score2++; 
+    }
+    if (score1 >= 10) {
         textFont(50);
         text("Winner Player 1!!", 550, 550);
-    } else if (score2 > 10) {
+    } else if (score2 >= 10) {
         textFont(50);
         text("Winner Player 2!!", 550, 550);
     }
- }
+}
 
