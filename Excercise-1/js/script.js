@@ -31,10 +31,10 @@ let paddle1 = 500;
 let paddle2 = 500;;
     
 // Ball 
-let x = 320;
-let y;
+let x = 100;
+let y = 320;
 let xspeed = 20;
-let yspeed = 10;
+let yspeed = 15;
 //score
 var score1 = 0;
 var score2 = 0;
@@ -65,18 +65,25 @@ function draw() {
 //for moving ball 
 function move() {
     x += xspeed;
+    y += yspeed;
     fill(255);
     ellipse(x, y, 20, 20);
 
+    if (x > width || x < -width) {
+        xspeed *= -1 +10;
+    } 
+    if (y > height || y < -height) {
+        yspeed *= -1;
+    }
 // makes ball hit wall
 
 }
-
+// function when points hit one side it assigns a point
 function point() {
-    if (x > WIDTH) {
-        score1 + 1;
-    } else if (x > -WIDTH) {
-        score2 + 1; 
+    if (x > width) {
+        score1++;;
+    } else if (x < -width) {
+        score2++;; 
     }
 }
 
