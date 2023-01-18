@@ -32,9 +32,9 @@ let paddle2 = 500;;
     
 // Ball 
 let x = 100;
-let y = 320;
-let xspeed = 20;
-let yspeed = 15;
+let y = 0;
+let xbounce = 20;
+let ybounce = 15;
 //score
 var score1 = 0;
 var score2 = 0;
@@ -64,16 +64,16 @@ function draw() {
 }
 //for moving ball 
 function move() {
-    x += xspeed;
-    y += yspeed;
+    x += xbounce;
+    y -= ybounce;
     fill(255);
     ellipse(x, y, 20, 20);
-
-    if (x > width || x < -width) {
-        xspeed *= -1 +10;
+// If the value of x or y exceeds the limits of the screen, the ball goes back the way it came || ISSUES: The ball goes one way and won't bounce anywhere else & it leaves the top part of the screen but comes back? 
+    if (x > width || x < - width%2) {
+        xbounce = -xbounce;
     } 
-    if (y > height || y < -height) {
-        yspeed *= -1;
+    if (y > height || y < - height%2) {
+        ybounce = -ybounce;
     }
 // makes ball hit wall
 
@@ -110,14 +110,14 @@ function keyPressed() {
 // paddle hits 
 function paddle() {
     if (x = paddle1) {
-        xspeed = -xspeed;
+        xbounce = -xbounce;
     } else if ( y = paddle1) {
-        yspeed = -yspeed;
+        ybounce = -ybounce;
     } 
     if (x = paddle2) {
-        xspeed= -xspeed;
+        xbounce= -xbounce;
     } else if (y = paddle2) {
-        yspeed = -yspeed;
+        ybounce = -ybounce;
     }
 }
  function scoreboard() {
