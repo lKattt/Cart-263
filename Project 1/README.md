@@ -1,4 +1,4 @@
-*Particles with Personality*
+**Particles with Personality**
 
 Preliminary Idea
 - Particle group that starts moving really slow or not at all
@@ -9,4 +9,4 @@ What shape?
 - Spiderweb? Why spiderweb? 
 - crystals? Refracting light? 
 - Sound based? 
-- --click an alarm snooze button to change forms overtime?-- | Click based interaction 
+- ~~click an alarm snooze button to change forms overtime?~~ | Click based interaction 
