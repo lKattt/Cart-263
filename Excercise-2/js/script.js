@@ -1,5 +1,5 @@
 /**
-Pong
+Particles with personalities
 by Katt for Cart 263 :)
 */
 
