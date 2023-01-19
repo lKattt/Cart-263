@@ -8,12 +8,12 @@
 **Colour pallet**
 - Dreamy
 - pinks, purples, blues turns to red, yellows, oranges? 
-- B;ack background | starts of in a dark space? 
+- Black background | starts of in a dark space? 
 
 **What shape?** 
 - Spiderweb? Why spiderweb? 
 - crystals? Refracting light? 
-- Sound based? 
+- Sound elements? 
 - ~~click an alarm snooze button to change forms overtime?~~ | Click based interaction 
-- Neuron - like? 
+- **Neuron - like?**
 - Jelly fish - like? 
