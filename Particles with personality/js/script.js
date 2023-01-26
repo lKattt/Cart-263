@@ -33,7 +33,7 @@ class Particle {
         this.speed = 2;
     }
     display() { 
-        fill(mouseX, mouseY, );
+        fill(mouseX, mouseY, this.speed, 220);
         ellipse(this.x, this.y, 10);
     }
     move() {
