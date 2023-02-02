@@ -2,17 +2,30 @@
 Process of waking up
 Author: Katt
 
-"use strict";
-*/
+/**Things to do
+ * make particle system
+ * make particles float in a circle
+ * colour
+ * shape
+ * mouse interaction
+ */
 
-let ball;
+
+let ball = [];
+let c;
+let r = 2;
+var angle = 0;
 
 /**
 Description of setup
 */
 function setup() {
-    createCanvas(500, 720);
-    ball = new Particle();
+    createCanvas(1080, 720);
+    for(let i = 0; i < 50; i++){
+        ball[i] = new Particle();
+    }
+    angleMode(DEGREES);
+    frameRate(24);
 }
 
 
@@ -21,26 +34,37 @@ Description of draw()
 */
 function draw() {
     background(50);
-    ball.display();
-    ball.move();
+    for(let i = 0; i < ball.length; i++){
+        ball[i].display();
+        ball[i].move();
+     }
     
 }
 
 class Particle {
     constructor() {
-        this.x = width/2;
-        this.y = height/2;
-        this.speed = 2;
-    }
-    display() { 
-        fill(mouseX, mouseY, this.speed, 220);
-        ellipse(this.x, this.y, 10);
+        this.x = random(width/r);
+        this.y = random(height/r);
+        this.speed = 10;
     }
     move() {
-        this.x += random(-this.speed, this.speed);
-        this.y += random(-this.speed, this.speed);
+       this.x += random(r + sin(angle));
+       this.y += random(r + cos(angle));
+        angle++;
     }
-    hover() {
-    
+    display() { 
+        if (this.x >= pmouseX && this.y >= pmouseY) {
+            c = color(0, 75, 200);
+            print(mouseX, mouseY);
+        } else {
+            c = color(150, 0, 0);
+        }
+        noStroke();
+        fill(c);
+        ellipse(this.x, this.y, 10);
     }
 }
+
+/** blur
+ * "filter(blur)"
+ */
