@@ -57,7 +57,7 @@ class Particle {
     }
     display() { 
         p = random(10, 25);
-        c = color(mouseX, mouseY, 130);
+        c = lerp(this.x, this.y, 30);
         noStroke();
         fill(c);
         ellipse(this.x, this.y, p);
