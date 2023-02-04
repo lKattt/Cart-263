@@ -21,13 +21,13 @@ let p;
 Description of setup
 */
 function setup() {
-    createCanvas(1080, 720);
+    createCanvas(1440, 1080);
     for(let i = 0; i < 900; i++){
         ball[i] = new Particle();
     }
     ellipseMode(CENTER);
     angleMode(DEGREES);
-    frameRate(12);
+    frameRate(60);
     
 }
 
@@ -37,30 +37,41 @@ Description of draw()
 */
 function draw() {
     background(50);
+    translate(width/2, height/2);
     for(let i = 0; i < ball.length; i++){
         ball[i].display();
+        ball[i].move();
      }
     
 }
 
 class Particle {
     constructor() {
-        this.x = random(width);
-        this.y = random(height);
-        this.speed = 10;
+        this.x = random(width/2);
+        this.y = random(height/2);
+        this.xspeed = 1;
+        this.yspeed = 1;
         this.diameter = 7;
     }
     move() { 
-       this.x += noise(random(100,300), 0.003, 0.002);
-       this.y += noise(0.003, random(255, 600), 0.002);
+       if(this.x < -width/2 || this.x > width/2) {
+        this.xspeed *= -1;
+       }
+       if (this.y -height/2 || this.y > height) {
+        this.yspeed *= -1;
+       }
+       this.x += this.xspeed;
+       this.y += this.yspeed;
        print("working");
     }
     display() { 
-        p = random(10, 25);
-        c = lerp(this.x, this.y, 30);
+        p = random(10, 11);
+        c = color(this.x, this.y);
         noStroke();
         fill(c);
-        ellipse(this.x, this.y, p);
+        ellipse(this.x, this.y, 10);
+        
+        rotate(TWO_PI/7);
     }
 }
 
