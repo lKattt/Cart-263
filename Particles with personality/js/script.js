@@ -65,13 +65,13 @@ class Particle {
         if (this.x > mouseX || this.y > mouseY) {
             c = color(90, 100, 200, 250);
         } else if (this.x < mouseX || this.y < mouseY) {
-            c = color(100, 3, 200);
+            c = map(noise(xoff), 0, 1, 0, 100);
         }
         noStroke();
-        fill(c);
+        fill(c, 100, 100);
         rect(this.x, this.y, this.diameter, 2);
         rotate(PI/7);
-        xoff += 0.001;
+        xoff += 0.01;
     }
     bounds() {
         if(this.x < -width%2 || this.x > width/2) {
