@@ -29,7 +29,7 @@ function setup() {
     rectMode(CENTER);
     angleMode(DEGREES);
     frameRate(60);
-    background(0);
+    background(0, 0, 0, 10);
 }
 
 
@@ -52,32 +52,33 @@ class Particle {
         this.y = random(height/2);
         this.xspeed = 0;
         this.yspeed = 0;
-        this.diameter = 20;
+        this.diameter = 40;
     }
     move() { 
         if (mouseX <= this.xspeed || mouseY <= this.yspeed) {
-            this.xspeed -= 1;
-            this.yspeed -= 1;
-        } else {
-            this.xspeed += 1;
-            this.yspeed += 1;
+            this.xspeed -= 0.1;
+            this.yspeed -= 0.1;
+        } 
+        if (this.xspeed > 2.5 || this.yspeed > 2.5) {
+            this.xspeed --;
+            this.yspeed --;
         }
-       this.x += this.xspeed;
-       this.y += this.yspeed;
+       this.x -= this.xspeed;
+       this.y -= this.yspeed;
        print("working");
     }
     display() { 
         p = random(10, 11);
         noStroke();
         fill(c, 100, 100, 150);
-        rect(this.x, this.y, this.diameter, 20);
+        rect(this.x, this.y, this.diameter, 40);
         rotate(PI/3);
     }
     bounds() {
-        if(this.x <= -width%2 || this.x >= width%2) {
+        if(this.x < -width/2 || this.x > width/2) {
             this.xspeed *= -1;
         }
-           if (this.y <= -height%2 || this.y >= height%2) {
+           if (this.y < -height/2 || this.y > height/2) {
             this.yspeed *= -1;
         }
     }
