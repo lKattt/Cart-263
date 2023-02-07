@@ -37,7 +37,7 @@ function setup() {
 Description of draw()
 */
 function draw() {
-    background(50);
+    background(0);
     translate(width/2, height/2);
     for(let i = 0; i < ball.length; i++){
         ball[i].display();
@@ -51,27 +51,25 @@ class Particle {
     constructor() {
         this.x = random(width/2);
         this.y = random(height/2);
-        this.xspeed = 2;
+        this.xspeed = 1;
         this.yspeed = 1;
-        this.diameter = 500;
+        this.diameter = 200;
     }
     move() { 
+        if (mouseX > width/2 && mouseY > height/2) {
+            this.xspeed--;
+            this.yspeed--;
+        }
        this.x += this.xspeed;
        this.y += this.yspeed;
        print("working");
     }
     display() { 
         p = random(10, 11);
-        if (this.x > mouseX || this.y > mouseY) {
-            c = color(90, 100, 200, 250);
-        } else if (this.x < mouseX || this.y < mouseY) {
-            c = map(noise(xoff), 0, 1, 0, 100);
-        }
         noStroke();
         fill(c, 100, 100);
         rect(this.x, this.y, this.diameter, 2);
         rotate(PI/7);
-        xoff += 0.01;
     }
     bounds() {
         if(this.x < -width%2 || this.x > width/2) {
