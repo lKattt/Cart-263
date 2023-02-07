@@ -65,8 +65,9 @@ class Particle {
     }
     display() { 
         p = random(10, 11);
+        c = 255;
         noStroke();
-        fill(20, 10, 100, 150);
+        fill(c);
         rect(this.x, this.y, this.diameter, 40);
         rotate(PI/3);
     }
