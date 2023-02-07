@@ -59,10 +59,6 @@ class Particle {
             this.xspeed -= 0.1;
             this.yspeed -= 0.1;
         } 
-        if (this.xspeed > 2.5 || this.yspeed > 2.5) {
-            this.xspeed --;
-            this.yspeed --;
-        }
        this.x -= this.xspeed;
        this.y -= this.yspeed;
        print("working");
@@ -70,7 +66,7 @@ class Particle {
     display() { 
         p = random(10, 11);
         noStroke();
-        fill(c, 100, 100, 150);
+        fill(20, 10, 100, 150);
         rect(this.x, this.y, this.diameter, 40);
         rotate(PI/3);
     }
