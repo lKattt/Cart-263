@@ -12,11 +12,12 @@ Author: Katt
 
 
 let ball = [];
-let c;
-let r = 2;
 var angle = 0;
 let p;
-let xoff = 0;
+let xoff = 2;
+let r;
+let g;
+let b;
 
 /**
 Description of setup
@@ -28,6 +29,7 @@ function setup() {
     }
     rectMode(CENTER);
     angleMode(DEGREES);
+    colorMode(HSB, 100);
     frameRate(60);
     background(0, 0, 0, 10);
 }
@@ -42,6 +44,7 @@ function draw() {
         ball[i].display();
         ball[i].move();
         ball[i].bounds();
+        //ball[i].connect(ball);
     }
     background(0, 0, 0, 10);
 }
@@ -56,7 +59,6 @@ class Particle {
     }
     move() { 
         if (mouseX <= this.xspeed || mouseY <= this.yspeed) {
-            c = color()
             this.xspeed -= 0.005;
             this.yspeed -= 0.005;
         } 
@@ -65,10 +67,11 @@ class Particle {
        print("working");
     }
     display() { 
-        p = random(10, 11);
-        c = color(154, 157, 245);
+        r = 100;
+        g = map(noise(xoff), 0, 1, 0, 100);
+        b = map(noise(xoff), 0, 1, 0, 100);
         noStroke();
-        fill(c);
+        fill(g, 0, r);
         rect(this.x, this.y, this.diameter, 40);
         rotate(PI/3);
     }
@@ -78,6 +81,13 @@ class Particle {
         }
         if (this.y < -height/2 || this.y > height/2) {
             this.yspeed *= -1;
+        }
+    }
+    connect(particles){ 
+        for(let i = 0; i < particles.length; i++){
+        if (dist(particles[i].x, particles[i].y, this.x, this.y)) {
+            
+          }
         }
     }
 }
