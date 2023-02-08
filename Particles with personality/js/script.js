@@ -23,7 +23,7 @@ Description of setup
 */
 function setup() {
     createCanvas(1440, 1080);
-    for(let i = 0; i < 700; i++){
+    for(let i = 0; i < 400; i++){
         ball[i] = new Particle();
     }
     rectMode(CENTER);
@@ -56,16 +56,17 @@ class Particle {
     }
     move() { 
         if (mouseX <= this.xspeed || mouseY <= this.yspeed) {
-            this.xspeed -= 0.1;
-            this.yspeed -= 0.1;
+            c = color()
+            this.xspeed -= 0.005;
+            this.yspeed -= 0.005;
         } 
-       this.x -= this.xspeed;
-       this.y -= this.yspeed;
+       this.x += this.xspeed;
+       this.y += this.yspeed;
        print("working");
     }
     display() { 
         p = random(10, 11);
-        c = 255;
+        c = color(154, 157, 245);
         noStroke();
         fill(c);
         rect(this.x, this.y, this.diameter, 40);
@@ -75,7 +76,7 @@ class Particle {
         if(this.x < -width/2 || this.x > width/2) {
             this.xspeed *= -1;
         }
-           if (this.y < -height/2 || this.y > height/2) {
+        if (this.y < -height/2 || this.y > height/2) {
             this.yspeed *= -1;
         }
     }
