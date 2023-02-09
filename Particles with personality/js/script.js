@@ -107,11 +107,11 @@ class Particle2 { //makes another particle system
     }
     move() { 
         if (mouseX <= this.xspeed2 || mouseY <= this.yspeed2) { // if mouse position through mouseX or Y is smaller than the value given by this.xspeed or yspeed this.x and yspeed will decrease using the value on the right | assigns to the variable new bnumber
-            this.xspeed2 -= 0.01;
-            this.yspeed2 -= 0.01;
+            this.xspeed2 -= 0.1;
+            this.yspeed2 -= 0.1;
         } else if (mouseX >= this.xspeed2 || mouseY >= this.yspeed2) {
-            this.xspeed2 += 0.01;
-            this.yspeed2 += 0.01;
+            this.xspeed2 += 0.1;
+            this.yspeed2 += 0.1;
         }
         if (this.xspeed2 > 2 || this.yspeed2 > 2) {
             this.xspeed2 -= 0.5;
