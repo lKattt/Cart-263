@@ -85,7 +85,7 @@ class Particle { //makes particle system
         noStroke();
         fill(r, g, b, this.xspeed);
         //fill(c);
-        rect(this.x, this.y, this.diameter, 40); // size and shape of particles
+        rect(this.x, this.y, this.diameter, 60); // size and shape of particles
         rotate(PI/3);
     }
     bounds() { //if this.x value exceeds the width of screen this.xand y speed will be * by -1 to reverse direction of particle
@@ -123,7 +123,7 @@ class Particle2 { //makes another particle system
     }
     display() {
         noStroke();
-        fill(r, this.xspeed2, b, this.yspeed); //colour values pulled from 3 noise maps and the opactity is controlled by yspeed to create wispy effect
+        fill(r, g, b, this.yspeed); //colour values pulled from 3 noise maps and the opactity is controlled by yspeed to create wispy effect
         //fill(c);
         rect(this.x2, this.y2, this.diameter2, 40); // size and shape of particles
         rotate(PI/3);
