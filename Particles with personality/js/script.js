@@ -49,12 +49,12 @@ function draw() {
         ball[i].bounds();
     }
     background(0, 0, 0, 2);
-    r = map(noise(xoff), 20, 1, 0, 100);
-    g = map(noise(xoff), 0, 1, 0, 100);
-    b = map(noise(xoff), 0, 0, 40, 100);
-    r2 = map(noise(xoff), 0, 1, 0, 100);
-    g2 = map(noise(xoff), 0, 50, 50, 100);
-    b2 = map(noise(xoff), 0, 20, 100, 100);
+    r = map(noise(xoff), 2, 1, 0, 150);
+    g = map(noise(xoff), 0, 1, 0, 50);
+    b = map(noise(xoff), 0, 0, 4, 100);
+    r2 = map(noise(xoff), 0, 1, 0, 5);
+    g2 = map(noise(xoff), 0, 5, 0, 50);
+    b2 = map(noise(xoff), 0, 2, 10, 150);
     xoff += 0.001;
 }
 
