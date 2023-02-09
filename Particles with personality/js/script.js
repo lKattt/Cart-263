@@ -11,8 +11,9 @@ Author: Katt
  */
 
 
-let ball = [];
-let xoff = 4;
+let ball = []; // creates an array of particles
+let xoff = 4; // xoffset to use with noise function idea inspired by code found by  jarivkin | simple perlin noise colour
+//variables for particles
 let c;
 let r;
 let g;
@@ -32,7 +33,7 @@ function setup() {
     frameRate(60);
     background(0);
 }
-
+//variavbles for second set of particles
 let r2;
 let g2;
 let b2;
@@ -73,11 +74,11 @@ class Particle { //makes particle system
             this.xspeed += 0.01;
             this.yspeed += 0.01;
         }
-        if (this.xspeed > 2 || this.yspeed > 2) {
+        if (this.xspeed > 2 || this.yspeed > 2) { //if the speed value gets too high, brings it down slowly overtime | acts as a sort of limit
             this.xspeed -= 0.5;
             this.yspeed -= 0.5;
         }
-       this.x += this.xspeed;
+       this.x += this.xspeed; //this.xspeed subtracted from original value, new result after becomes the new this.x value
        this.y += this.yspeed;
     }
     display() {
@@ -87,7 +88,7 @@ class Particle { //makes particle system
         rect(this.x, this.y, this.diameter, 40); // size and shape of particles
         rotate(PI/3);
     }
-    bounds() { //if this.x vaklue exceeds the width of screen this.xand y speed will be * by -1 to reverse direction of particle
+    bounds() { //if this.x value exceeds the width of screen this.xand y speed will be * by -1 to reverse direction of particle
         if(this.x < -width/2 || this.x > width/2) {
             this.xspeed *= -1;
         }
@@ -122,7 +123,7 @@ class Particle2 { //makes another particle system
     }
     display() {
         noStroke();
-        fill(r, g, b, this.yspeed);
+        fill(r, g, b, this.yspeed); //colour values pulled from 3 noise maps and the opactity is controlled by yspeed to create wispy effect
         //fill(c);
         rect(this.x2, this.y2, this.diameter2, 40); // size and shape of particles
         rotate(PI/3);
