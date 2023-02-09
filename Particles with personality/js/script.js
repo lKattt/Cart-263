@@ -12,9 +12,8 @@ Author: Katt
 
 
 let ball = [];
-var angle = 0;
-let p;
-let xoff = 2;
+let xoff = 4;
+let c;
 let r;
 let g;
 let b;
@@ -31,9 +30,12 @@ function setup() {
     angleMode(DEGREES);
     colorMode(HSB, 100);
     frameRate(60);
-    background(0, 0, 0, 10);
+    background(0);
 }
 
+let r2;
+let g2;
+let b2;
 
 /**
 Description of draw()
@@ -44,13 +46,19 @@ function draw() {
         ball[i].display();
         ball[i].move();
         ball[i].bounds();
-        //ball[i].connect(ball);
     }
-    background(0, 0, 0, 10);
+    background(0, 0, 0, 2);
+    r = map(noise(xoff), 20, 1, 0, 100);
+    g = map(noise(xoff), 0, 1, 0, 100);
+    b = map(noise(xoff), 0, 0, 40, 100);
+    r2 = map(noise(xoff), 0, 1, 0, 100);
+    g2 = map(noise(xoff), 0, 50, 50, 100);
+    b2 = map(noise(xoff), 0, 20, 100, 100);
+    xoff += 0.001;
 }
 
-class Particle {
-    constructor() {
+class Particle { //makes particle system
+    constructor() { //defines variables for particles class
         this.x = random(width/2);
         this.y = random(height/2);
         this.xspeed = 0;
@@ -58,24 +66,28 @@ class Particle {
         this.diameter = 40;
     }
     move() { 
-        if (mouseX <= this.xspeed || mouseY <= this.yspeed) {
-            this.xspeed -= 0.005;
-            this.yspeed -= 0.005;
-        } 
+        if (mouseX <= this.xspeed || mouseY <= this.yspeed) { // if mouse position through mouseX or Y is smaller than the value given by this.xspeed or yspeed this.x and yspeed will decrease using the value on the right | assigns to the variable new bnumber
+            this.xspeed -= 0.01;
+            this.yspeed -= 0.01;
+        } else if (mouseX >= this.xspeed || mouseY >= this.yspeed) {
+            this.xspeed += 0.01;
+            this.yspeed += 0.01;
+        }
+        if (this.xspeed > 2 || this.yspeed > 2) {
+            this.xspeed -= 0.5;
+            this.yspeed -= 0.5;
+        }
        this.x += this.xspeed;
        this.y += this.yspeed;
-       print("working");
     }
-    display() { 
-        r = 100;
-        g = map(noise(xoff), 0, 1, 0, 100);
-        b = map(noise(xoff), 0, 1, 0, 100);
+    display() {
         noStroke();
-        fill(g, 0, r);
-        rect(this.x, this.y, this.diameter, 40);
+        fill(r, g, b, this.xspeed);
+        //fill(c);
+        rect(this.x, this.y, this.diameter, 40); // size and shape of particles
         rotate(PI/3);
     }
-    bounds() {
+    bounds() { //if this.x vaklue exceeds the width of screen this.xand y speed will be * by -1 to reverse direction of particle
         if(this.x < -width/2 || this.x > width/2) {
             this.xspeed *= -1;
         }
@@ -83,15 +95,47 @@ class Particle {
             this.yspeed *= -1;
         }
     }
-    connect(particles){ 
-        for(let i = 0; i < particles.length; i++){
-        if (dist(particles[i].x, particles[i].y, this.x, this.y)) {
-            
-          }
+}
+
+class Particle2 { //makes another particle system
+    constructor() { //defines variables for particles class
+        this.x2 = random(width/2);
+        this.y2 = random(height/2);
+        this.xspeed2 = 0;
+        this.yspeed2 = 0;
+        this.diameter2 = 40;
+    }
+    move() { 
+        if (mouseX <= this.xspeed2 || mouseY <= this.yspeed2) { // if mouse position through mouseX or Y is smaller than the value given by this.xspeed or yspeed this.x and yspeed will decrease using the value on the right | assigns to the variable new bnumber
+            this.xspeed2 -= 0.01;
+            this.yspeed2 -= 0.01;
+        } else if (mouseX >= this.xspeed2 || mouseY >= this.yspeed2) {
+            this.xspeed2 += 0.01;
+            this.yspeed2 += 0.01;
+        }
+        if (this.xspeed2 > 2 || this.yspeed2 > 2) {
+            this.xspeed2 -= 0.5;
+            this.yspeed2 -= 0.5;
+        }
+       this.x2 += this.xspeed2;
+       this.y2 += this.yspeed2;
+    }
+    display() {
+        noStroke();
+        fill(r, g, b, this.yspeed);
+        //fill(c);
+        rect(this.x2, this.y2, this.diameter2, 40); // size and shape of particles
+        rotate(PI/3);
+    }
+    bounds() { //if this.x vaklue exceeds the width of screen this.xand y speed will be * by -1 to reverse direction of particle
+        if(this.x2 < -width/2 || this.x2 > width/2) {
+            this.xspeed2 *= -1;
+        }
+        if (this.y2 < -height/2 || this.y2 > height/2) {
+            this.yspeed2 *= -1;
         }
     }
 }
-
 /** blur
  * "filter(blur)"
  */
