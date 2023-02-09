@@ -54,7 +54,7 @@ function draw() {
     b = map(noise(xoff), 0, 0, 4, 100);
     r2 = map(noise(xoff), 0, 1, 0, 5);
     g2 = map(noise(xoff), 0, 5, 0, 50);
-    b2 = map(noise(xoff), 0, 2, 10, 150);
+    b2 = map(noise(xoff), 1, 2, 0, 150);
     xoff += 0.001;
 }
 
@@ -123,7 +123,7 @@ class Particle2 { //makes another particle system
     }
     display() {
         noStroke();
-        fill(r, g, b, this.yspeed); //colour values pulled from 3 noise maps and the opactity is controlled by yspeed to create wispy effect
+        fill(r, this.xspeed2, b, this.yspeed); //colour values pulled from 3 noise maps and the opactity is controlled by yspeed to create wispy effect
         //fill(c);
         rect(this.x2, this.y2, this.diameter2, 40); // size and shape of particles
         rotate(PI/3);
