@@ -12,7 +12,7 @@ Author: Katt
 
 
 let ball = []; // creates an array of particles
-let xoff = 4; // xoffset to use with noise function idea inspired by code found by  jarivkin | simple perlin noise colour
+let xoff = 4; // xoffset to use with noise function idea inspired by code found by jarivkin | simple perlin noise colour
 //variables for particles
 let c;
 let r;
