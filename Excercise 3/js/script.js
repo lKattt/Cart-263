@@ -6,22 +6,11 @@ Author Katt
 
 //"use strict";
 
-let table;
-let points = [];
-function preload() {
-table = loadTable("EVA_Data.csv", "csv", "header");
-}
+
 function setup() {
 createCanvas(800, 800);
 background(0);
-for (var r = 0; r < table.getRowCount(); r++){ // Cycle through each row of the table
-points[r] = new DataPoint(table.getString(r, 1),
-table.getString(r, 2),
-table.getString(r, 5),
-table.getString(r, 0));
-// Pass through the values in each row
-points[r].drawBasic();
-}
+
 }
 class DataPoint {
 constructor(country, name, duration, ID){
