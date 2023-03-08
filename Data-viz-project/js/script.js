@@ -2,7 +2,7 @@ let table;
 let points = [];
 
 function preload() {
-  table = loadTable("EVA_Data.csv", "csv", "header");
+  table = loadTable("Spotify 2010 - 2019 Top 100.csv", "csv", "header");
 }
 
 function setup() {
@@ -16,10 +16,14 @@ function setup() {
                                 // Pass through the values in each row
   }
 }
+
+function draw() {
+  drawBasic();
+}
 class DataPoint { 
-    constructor(country, name, duration, ID){ 
+    constructor(year, name, duration, ID){ 
         // Add each data point to the object
-        this.country = country;
+        this.year = year;
         this.duration = duration;
         this.name = name;
         this.ID = ID;
