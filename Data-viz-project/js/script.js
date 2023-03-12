@@ -6,7 +6,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1080, 720);
   background(0);
   for (var r = 0; r < table.getRowCount(); r++){ // Cycle through each row of the table
       points[r] = new DataPoint(table.getString(r, 0), 
@@ -15,18 +15,16 @@ function setup() {
                               //  table.getString(r, 7));
                                 // Pass through the values in each row
   }
-  let rows = table.findRows('2010', 'year');
-  print(rows.length + ' Songs found');
-  for (let i = 0; i < rows.length; i++){
-  print(rows[i]);
-  }
 }
 
 function draw() {
   //background(50);
   for(let i = 0; i < 10; i++){
     points[i].display();
+    //points[i].specify();
+    points[i].move();
 }
+background(10, 0.05);
 }
 
 class DataPoint { 
@@ -37,21 +35,33 @@ class DataPoint {
         this.bpm = bpm;
         this.year = year;
         this.ID = ID;
-        this.x = random(width);
-        this.y = random(height);
-        this.w = this.genre;
-        this.xspeed = 0;
-        this.yspeed = 0;
+        this.x = random(0, width);
+        this.y = random(0, height);
+        this.w = random(this.genre);
+        this.xspeed = 2;
+        this.yspeed = 1;
     }
-    display() {
+    display() { //displays particles using this.genre which returns values from the genre column | changes every refresh (not intended don't know why it does that but hey, something's better than nothing at this point)
       noStroke();
       fill(255);
-      ellipse(this.x, this.y, this.w);
+      ellipse(this.x, this.y, this.genre);
      // filter(BLUR, this.genre);
+    // print(this.w);
+    print(this.bpm);
     }
-   // move() {
+   specify() { //finds bpm in rows that also have the year 2010 (or that's what it's supposed to do) | why does it only return one? 
+   let row = table.findRows('2010', 'year');
+  if (row = table.findRows('2010', 'year')) {
+    row = getStrings('bpm');
+  }
+    print(row);
+   }
+   move() {
+  this.x += this.xspeed;
+  this.y += this.yspeed;
 
-   // }
+   }
+   
 }
 
 
