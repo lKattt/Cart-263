@@ -5,9 +5,9 @@ Data visualisation Main bits
 Goals:
 
 Using csv file for Top spotify songs from 2010 - 2019 
-- Different years throughout time (timeout function?)
+- Different years throughout time (timeout function?) | didn't end up happening
 - colours and shape denote different genres that were on the list 
-- moves to the average bpm of the songs from that year 
+- moves to the average bpm of the songs from that year?
 
 What I'm working on:
 - making it look interesting | more like the bits in the background in that one scene in ratatouille 
