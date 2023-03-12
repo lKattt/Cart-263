@@ -22,7 +22,7 @@ function draw() {
   for(let i = 0; i < 10; i++){
     points[i].display();
     //points[i].specify();
-    points[i].move();
+   // points[i].move();
 }
 background(10, 0.05);
 }
