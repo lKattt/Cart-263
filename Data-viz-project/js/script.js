@@ -16,10 +16,16 @@ function setup() {
                                 // Pass through the values in each row
   }
   filter(BLUR);
+  rectMode(CENTER);
 }
 
 function draw() {
   //background(50);
+  stroke(5);
+  fill(255);
+  textAlign(CENTER);
+  textSize(25);
+  text("Minimalist Spotify Top 100", width/2, height/6);
   for(let i = 0; i < 10; i++){
     points[i].display();
     //points[i].specify();
@@ -44,7 +50,7 @@ class DataPoint {
     display() { //displays particles using this.genre which returns values from the genre column | changes every refresh (not intended don't know why it does that but hey, something's better than nothing at this point)
       noStroke();
       fill(255);
-      ellipse(this.x, this.y, this.genre);
+      ellipse(this.x, this.y, this.w);
     // print(this.w);
     }
    specify() { //finds bpm in rows that also have the year 2010 (or that's what it's supposed to do) | why does it only return one? 
