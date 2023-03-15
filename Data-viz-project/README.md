@@ -1,10 +1,8 @@
-# Template p5 project
+#Data visualisation using spotify top 100 list from 2010 to 2019
 
 --DISLAIMER--
 I genuinely could not understand what was going on so it was not done on time. I hope that my struggle at least gives me more than 0 
-
-Data visualisation using spotify top 100 list from 2010 to 2019 
-
+ 
 Goals:
 
 Using csv file for Top spotify songs from 2010 - 2019 
