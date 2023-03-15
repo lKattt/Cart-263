@@ -1,7 +1,8 @@
 # Data visualisation using spotify top 100 list from 2010 to 2019
 
 --DISLAIMER--
-I genuinely could not understand what was going on so it was not done on time. I hope that my struggle at least gives me more than 0 
+
+I genuinely could not understand what was going on so it was not done on time. I hope that my struggle at least gives me more than 0. If not completely understand that too. I will attempt it again at the end of the semester just for my state of mind. I cannot leave it like this but there is simply no time right now.
  
 Goals:
 
