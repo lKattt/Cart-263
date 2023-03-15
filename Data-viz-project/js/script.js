@@ -1,3 +1,6 @@
+/** This project has defeated me. I will be back before the end of the semester just for my state of mind but for now I'm leaving it be */
+
+
 let table;
 let points = [];
 
@@ -15,7 +18,7 @@ function setup() {
                               //  table.getString(r, 7));
                                 // Pass through the values in each row
   }
-  filter(BLUR);
+  filter(BLUR); // supposed to blur circles | takes a while to do, not sure why
   rectMode(CENTER);
 }
 
@@ -25,14 +28,13 @@ function draw() {
   fill(255);
   textAlign(CENTER);
   textSize(25);
-  text("Minimalist Spotify Top 100", width/2, height/6);
-  for(let i = 0; i < 10; i++){
+  text("Spotify Top 100", width/2, height/6);
+  for(let i = 0; i < 10; i++){ // creates array for particle information limited to 10 circles to have a cleaner screen
     points[i].display();
     //points[i].specify();
    // points[i].move();
 }
-background(10, 0, 0, 0.05);
-//filter(BLUR, 10);
+background(10, 0, 0, 0.05); //used this for when the circles moved around, would create sort of a 3d effect with the blur and movement
 }
 
 class DataPoint { 
@@ -60,7 +62,7 @@ class DataPoint {
   }
     print(row);
    }
-   move() {
+   move() { //caused the particles to move randomly around the screen | didn't make boundaries so itwould just fly off the screen
   this.x += this.xspeed;
   this.y += this.yspeed;
 
